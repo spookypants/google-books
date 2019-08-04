@@ -5,10 +5,16 @@ import React from "react";
 export function Input(props) {
   return (
     <div className="form-group">
+      {/* <Label htmlFor={props.name}>{props.label}</Label> */}
       <input className="form-control" {...props} />
     </div>
   );
 }
+
+// export function Label(props) {
+//   <label htmlFor={props.name}>{props.children}</label>
+// };
+
 
 export function TextArea(props) {
   return (

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
-import BookBtn from "../../components/BookBtn";
+import { Container } from "../components/Grid";
+import { List, ListItem } from "../components/List";
+import Jumbotron from "../components/Jumbotron";
+import API from "../utils/API";
+import BookBtn from "../components/BookBtn";
 
 class Saved extends Component {
     state = {
@@ -14,11 +14,11 @@ class Saved extends Component {
     };
 
     componentDidMount() {
-        this.getSavedBooks();
+        API.getBooks();
     }
 
     getSavedBooks = () => {
-        API.getSavedBooks()
+        API.getBooks()
             .then(res => {
                 if (res.data.length > 0) {
                     this.setState({

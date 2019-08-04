@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
-import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
-import { Container } from "../../components/Grid";
-import { Input, FormBtn } from "../../components/Form";
-import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from "constants";
+import Jumbotron from "../components/Jumbotron";
+import API from "../utils/API";
+import { Container } from "../components/Grid";
+import { Input, FormBtn } from "../components/Form";
 
 class Search extends Component {
     state = {
