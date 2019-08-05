@@ -43,61 +43,78 @@ class Results extends Component {
         if (this.state.noResults) {
             return (
                 <div>
-                    <Jumbotron>
-                        <h1 className="display-4">Gabe's Great Google Book Bash</h1>
-                        <p className="lead">Search for books. Save those books. Read them, maybe.</p>
-                        <hr/>
-                        <p className="lead">
-                            <Link className="btn btn-default btn-lg" to="/" role="button">New Search</Link>
-                            <Link className="btn btn-default btn-lg" to="/saved" role="button">Saved Books</Link>
-                        </p>
-                    </Jumbotron>
-                    <Container>
-                        <h2>Search Results</h2>
-                        <List>
-                            {this.state.books.map((book, index) => (
-                                <ListItem key={book.id}>
-                                    <div className="date-div">
-                                        <a
-                                          key={"" + index + book.id}
-                                          href={book.volumeInfo.infoLink}
-                                          target={this.state.target}
-                                        >
-                                          {book.volumeInfo.title}
-                                        </a>  
-                                          <p>Written by {book.volumeInfo.authors[0]}</p>
-                                        <p>
-                                        <img align="left" style={{paddingRight:10}}
-                                            src={book.volumeInfo.imageLinks.smallThumbnail} alt="new"
-                                        />
-                                          {book.volumeInfo.description}
-                                        </p>
-                                    </div>
-                                    <div className="book-btn-div">
-                                        <BookBtn
-                                          key={"" + book.id + index}
-                                          btntype="info"
-                                          disabled={book.volumeInfo.infoLink === "/"}
-                                          onClick={() => this.saveBook({
-                                              title: book.volumeInfo.title,
-                                              author: book.volumeInfo.authors[0],
-                                              description: book.volumeInfo.description,
-                                              image: book.volumeInfo.imageLinks.smallThumbnail,
-                                              link: book.volumeInfo.infoLink,
-                                              _id: book.id
-                                          })}
-                                        >
-                                          Save
-                                        </BookBtn>
-                                    </div>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Container>
+                  <Jumbotron>
+                    <h1 className="display-4">Gabe's Great Google Book Bash</h1>
+                    <p className="lead">Search for books. Save those books. Read them, maybe.</p>
+                    <hr />
+                    <p className="lead">
+                      <Link className="btn btn-default btn-lg" to="/" role="button">New Search</Link>
+                      <Link className="btn btn-default btn-lg" to="/saved" role="button">Saved Books</Link>
+                    </p>
+                  </Jumbotron>
+                  <Container>
+                    <Link to="/">No results! Try another search!</Link>
+                  </Container>
                 </div>
-            );
+            )
         }
+        return (
+            <div>
+                <Jumbotron>
+                    <h1 className="display-4">Gabe's Great Google Book Bash</h1>
+                    <p className="lead">Search for books. Save those books. Read them, maybe.</p>
+                    <hr/>
+                    <p className="lead">
+                        <Link className="btn btn-default btn-lg" to="/" role="button">New Search</Link>
+                        <Link className="btn btn-default btn-lg" to="/saved" role="button">Saved Books</Link>
+                    </p>
+                </Jumbotron>
+                <Container>
+                    <h2>Search Results</h2>
+                    <List>
+                        {this.state.books.map((book, index) => (
+                            <ListItem key={book.id}>
+                                <div className="date-div">
+                                    <a
+                                        key={"" + index + book.id}
+                                        href={book.volumeInfo.infoLink}
+                                        target={this.state.target}
+                                    >
+                                        {book.volumeInfo.title}
+                                    </a>  
+                                        <p>Written by {book.volumeInfo.authors[0]}</p>
+                                    <p>
+                                    <img align="left" style={{paddingRight:10}}
+                                        src={book.volumeInfo.imageLinks.smallThumbnail} alt="new"
+                                    />
+                                        {book.volumeInfo.description}
+                                    </p>
+                                </div>
+                                <div className="book-btn-div">
+                                    <BookBtn
+                                        key={"" + book.id + index}
+                                        btntype="info"
+                                        disabled={book.volumeInfo.infoLink === "/"}
+                                        onClick={() => this.saveBook({
+                                            title: book.volumeInfo.title,
+                                            author: book.volumeInfo.authors[0],
+                                            description: book.volumeInfo.description,
+                                            image: book.volumeInfo.imageLinks.smallThumbnail,
+                                            link: book.volumeInfo.infoLink,
+                                            _id: book.id
+                                        })}
+                                    >
+                                        Save
+                                    </BookBtn>
+                                </div>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Container>
+            </div>
+        );
     }
-}
+
+};
 
 export default Results;
