@@ -18,7 +18,7 @@ class Saved extends Component {
     }
 
     getSavedBooks = () => {
-        API.getBooks()
+        API.getAllBooks()
             .then(res => {
                 if (res.data.length > 0) {
                     this.setState({
